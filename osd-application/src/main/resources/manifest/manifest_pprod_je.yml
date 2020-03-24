@@ -1,0 +1,13 @@
+applications:
+    name: osd-application-je-pprod
+    instances: 1
+    memory: 1G
+    buildpack: mdse_java_offline_v19001_SP_cflinuxfs3
+    stack: cflinuxfs3
+    path: target/@project.build.finalName@.jar
+    host: osd-application-je-pprod
+    timeout: 180
+    services:
+       - splunk
+    #  -  app-dynamics-agent
+    - contrast-security-service

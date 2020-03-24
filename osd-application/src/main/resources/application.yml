@@ -1,0 +1,8 @@
+server:
+  port: 8022
+  Logging: 
+   Level: INFO
+  Management: 
+    Security: 
+    Enabled: false
+  
