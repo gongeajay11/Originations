@@ -1,10 +1,12 @@
 package com.example.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.example.exception.EmployeeNotFoundException;
 import com.example.model.Employee;
 import com.example.repository.EmployeeRepo;
 
@@ -20,16 +22,23 @@ public class ServiceImpl implements Service {
 	}
 
 	public Employee add(Employee emp) {
+		if (emp.getName() == null) {
+			throw new EmployeeNotFoundException("employee name can't be empty");
+		} else {
+			return repo.save(emp);
+		}
 
-		return repo.save(emp);
 	}
 
 	public Employee update(Employee emp) {
+		Employee e = new Employee();
+		if (e.getClass().getFields() != null) {
+			return repo.save(emp);
+		}
+		return null;
 
-		return repo.save(emp);
 	}
 
-	
 	public void delete(int id) {
 
 		repo.deleteById(id);
@@ -38,12 +47,20 @@ public class ServiceImpl implements Service {
 
 	public List<Employee> getAll() {
 
-		return (List<Employee>) repo.findAll();
+		List<Employee> list = new ArrayList<>();
+		if (!list.isEmpty()) {
+
+			return (List<Employee>) repo.findAll();
+		}
+		return null;
 	}
 
 	public Optional<Employee> getSingleEmployee(int id) {
+		if (Employee.class.getFields() != null) {
+			return repo.findById(id);
+		}
+		return null;
 
-		return repo.findById(id);
 	}
 
 }
