@@ -34,8 +34,10 @@ public class ServiceImpl implements Service {
 		Employee e = new Employee();
 		if (e.getClass().getFields() != null) {
 			return repo.save(emp);
+		} else {
+			throw new EmployeeNotFoundException("you must enter required fields first");
 		}
-		return null;
+		// return null;
 
 	}
 
