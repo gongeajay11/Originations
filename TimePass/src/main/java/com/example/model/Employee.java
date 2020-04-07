@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import io.micrometer.core.lang.NonNull;
@@ -14,10 +13,11 @@ import io.micrometer.core.lang.NonNull;
 @Table(name = "emp_table")
 public class Employee {
 
+	
+
+	
 	@Id
 	@Column(name = "emp_id")
-	@NotEmpty
-	@NotBlank
 	private int id;
 
 	public Employee() {
