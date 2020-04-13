@@ -37,7 +37,7 @@ public class EmployeeController {
 
 	@PostMapping(value = "/api/applications")
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Employee addEmployee(@Valid @RequestBody HttpHeaders httpHeaders, Employee emp) {
+	public Employee addEmployee(@Valid @RequestBody  Employee emp) {
 		return ser.add(emp);
 	}
 

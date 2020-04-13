@@ -21,6 +21,12 @@ public class ServiceImpl implements Service {
 		this.repo = repo;
 	}
 
+	public ServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
 	public Employee add(Employee emp) {
 		if (emp.getName() == null) {
 			throw new EmployeeNotFoundException("employee name can't be empty");
