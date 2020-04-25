@@ -28,7 +28,8 @@ public class TimePassApplicationTests {
 	@Autowired
 	private WebApplicationContext wc;
 
-	Employee employee = new Employee();
+	Employee e = new Employee(1, "ajay");
+
 	ObjectMapper mapper = new ObjectMapper();
 
 	@Before
@@ -36,17 +37,15 @@ public class TimePassApplicationTests {
 
 		mockMvc = MockMvcBuilders.webAppContextSetup(wc).build();
 	}
-
+// adding mockito test cae for post mapping
 	@Test
 	public void saveEmployee() throws JsonProcessingException, Exception {
-		MvcResult result = mockMvc.perform(post("/api/applications")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(mapper.writeValueAsString(employee)))
-				.andExpect(status().isCreated())
-				.andReturn();
+		MvcResult result = mockMvc.perform(
+				post("/api/applications").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writeValueAsString(e)))
+				.andExpect(status().isCreated()).andReturn();
 
 		Employee response = mapper.readValue(result.getResponse().getContentAsString(), Employee.class);
-		assertEquals(employee, response);
+		assertEquals(e, response);
 
 	}
 
@@ -59,10 +58,4 @@ public class TimePassApplicationTests {
 	 * andReturn(); }
 	 */
 
-	
-	
-	
-	
-	
-	
 }
