@@ -25,3 +25,4 @@ public class TimePassApplication extends SpringBootServletInitializer {
 	}
 
 }
+// to crete war file we have extended to spring boot servlet initializer class and override configure method.
