@@ -1,0 +1,22 @@
+applications:
+    name: osd-application-my-pprod
+    instances: 1
+    memory: 1G
+    buildpack: mdse_java_offline_v19001_SP_cflinuxfs3
+    stack: cflinuxfs3
+    path: target/@project.build.finalName@.jar
+    host: osd-application-my-pprod
+    timeout: 180
+    services:
+       - splunk
+    #  -  app-dynamics-agent
+    - contrast-security-service
+env:
+  JAVA_OPTS: 'Dcontrast.override.appname=OSD-APPLICATION-MY -Dcontrast.group=RBWM-IT_OriginationsScaleDelivery -Dcontrast.server=wgdc01-digital-originations-uk'
+  PCF_ORG: wgdc01-digital-originations-uk
+  PCF_SPACE: development
+  INFO_BUILD_VERSION: @project.version@
+  INFO_BUILD_NAME: osd-application-my-pprod
+  LOGGING_LEVEL: INFO
+  
+  
